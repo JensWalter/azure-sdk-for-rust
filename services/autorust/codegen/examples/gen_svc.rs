@@ -9,9 +9,6 @@ const OUTPUT_FOLDER: &str = "../svc";
 const ONLY_SERVICES: &[&str] = &[];
 
 const SKIP_SERVICES: &[&str] = &[
-    "blobstorage",             // uses "x-ms-paths" instead of "paths"
-    "filestorage",             // uses "x-ms-paths" instead of "paths"
-    "queuestorage",            // uses "x-ms-paths" instead of "paths"
     "deviceupdate",            // missing field `authorizationUrl`
     "digitaltwins",            // missing field `scopes`
     "machinelearningservices", // untagged enum
@@ -20,27 +17,28 @@ const SKIP_SERVICES: &[&str] = &[
     "keyvault",                // `{field_name}` used in formatting url
     "videoanalyzer",           // no operations
     "mediaservices",           // no operations
+    "marketplacecatalog",      // BadRequest400 uses models::String?
 ];
 
 const SKIP_SERVICE_TAGS: &[(&str, &str)] = &[
-    ("agrifood", "package-2021-03-31-preview"),  // untagged enum?
-    ("attestation", "package-2018-09-01"),       // uses models::String?
-    ("containerregistry", "package-2019-08"),    // untagged enum
-    ("containerregistry", "package-2019-07"),    // untagged enum
-    ("purview", "package-2021-05-01-preview"),   // untagged enum
-    ("keyvault", "package-preview-7.3-preview"), // parse error
-    ("keyvault", "package-7.2"),                 // parse error
-    ("keyvault", "package-7.2-preview"),         // parse error
-    ("batch", "package-2018-03.6.1"),            // TODO #81 DataType::File
-    ("batch", "package-2017-09.6.0"),            // TODO #81 DataType::File
-    ("batch", "package-2017-06.5.1"),            // TODO #81 DataType::File
-    ("maps", "package-preview-2.0"),             // string \"200Async\", expected length 3"
-    ("maps", "package-1.0-preview"),             // "invalid value: string \"201Async\"
-    ("storagedatalake", "package-2018-11"),      // "invalid value: string \"ErrorResponse\", expected length 3"
+    ("agrifood", "package-2021-03-31-preview"),    // untagged enum?
+    ("attestation", "package-2018-09-01"),         // uses models::String?
+    ("containerregistry", "package-2019-08"),      // untagged enum
+    ("containerregistry", "package-2019-07"),      // untagged enum
+    ("datalake-store", "package-2016-11"),         // TODO #81 DataType::File
+    ("datalake-store", "package-2015-10-preview"), // TODO #81 DataType::File
+    ("purview", "package-2021-05-01-preview"),     // untagged enum
+    ("keyvault", "package-preview-7.3-preview"),   // parse error
+    ("keyvault", "package-7.2"),                   // parse error
+    ("keyvault", "package-7.2-preview"),           // parse error
+    ("batch", "package-2018-03.6.1"),              // TODO #81 DataType::File
+    ("batch", "package-2017-09.6.0"),              // TODO #81 DataType::File
+    ("batch", "package-2017-06.5.1"),              // TODO #81 DataType::File
+    ("maps", "package-preview-2.0"),               // string \"200Async\", expected length 3"
+    ("maps", "package-1.0-preview"),               // "invalid value: string \"201Async\"
+    ("storagedatalake", "package-2018-11"),        // "invalid value: string \"ErrorResponse\", expected length 3"
     ("storagedatalake", "package-2018-06-preview"),
     ("storagedatalake", "package-2019-10"),
-    ("storagedatalake", "package-2020-06"), // uses "x-ms-paths" instead of "paths"
-    ("storagedatalake", "package-2020-10"),
 ];
 
 const INVALID_TYPE_WORKAROUND: &[(&str, &str, &str)] = &[(
@@ -115,6 +113,17 @@ const BOX_PROPERTIES: &[(&str, &str, &str)] = &[
         "../../../azure-rest-api-specs/specification/timeseriesinsights/data-plane/Microsoft.TimeSeriesInsights/stable/2020-07-31/timeseriesinsights.json",
         "TsiErrorBody",
         "innerError",
+    ),
+    // datalake-analytics
+    (
+        "../../../azure-rest-api-specs/specification/datalake-analytics/data-plane/Microsoft.DataLakeAnalytics/stable/2016-11-01/job.json",
+        "JobInnerError",
+        "innerError"
+    ),
+    (
+        "../../../azure-rest-api-specs/specification/datalake-analytics/data-plane/Microsoft.DataLakeAnalytics/preview/2017-09-01-preview/job.json",
+        "JobInnerError",
+        "innerError"
     )
 ];
 
@@ -246,7 +255,6 @@ fn gen_crate(spec: &SpecReadme) -> Result<()> {
     if feature_mod_names.len() == 0 {
         return Ok(());
     }
-    println!("creating");
     cargo_toml::create(
         crate_name,
         &feature_mod_names,

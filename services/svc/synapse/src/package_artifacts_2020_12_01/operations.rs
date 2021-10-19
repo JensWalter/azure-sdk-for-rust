@@ -2,9 +2,9 @@
 #![allow(unused_mut)]
 #![allow(unused_variables)]
 #![allow(unused_imports)]
-use crate::models::*;
+use super::{models, models::*};
 pub mod big_data_pools {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn list(operation_config: &crate::OperationConfig) -> std::result::Result<BigDataPoolResourceInfoListResult, list::Error> {
         let http_client = operation_config.http_client();
         let url_str = &format!("{}/bigDataPools", operation_config.base_path(),);
@@ -42,7 +42,7 @@ pub mod big_data_pools {
         }
     }
     pub mod list {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -104,7 +104,7 @@ pub mod big_data_pools {
         }
     }
     pub mod get {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -128,7 +128,7 @@ pub mod big_data_pools {
     }
 }
 pub mod data_flow {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn get_data_flow(
         operation_config: &crate::OperationConfig,
         data_flow_name: &str,
@@ -176,7 +176,7 @@ pub mod data_flow {
         }
     }
     pub mod get_data_flow {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -250,7 +250,7 @@ pub mod data_flow {
         }
     }
     pub mod create_or_update_data_flow {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200(DataFlowResource),
@@ -317,7 +317,7 @@ pub mod data_flow {
         }
     }
     pub mod delete_data_flow {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -386,7 +386,7 @@ pub mod data_flow {
         }
     }
     pub mod rename_data_flow {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -457,7 +457,7 @@ pub mod data_flow {
         }
     }
     pub mod get_data_flows_by_workspace {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -481,7 +481,7 @@ pub mod data_flow {
     }
 }
 pub mod data_flow_debug_session {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn create_data_flow_debug_session(
         operation_config: &crate::OperationConfig,
         request: &CreateDataFlowDebugSessionRequest,
@@ -529,7 +529,7 @@ pub mod data_flow_debug_session {
         }
     }
     pub mod create_data_flow_debug_session {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Accepted202,
@@ -601,7 +601,7 @@ pub mod data_flow_debug_session {
         }
     }
     pub mod query_data_flow_debug_sessions_by_workspace {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -667,7 +667,7 @@ pub mod data_flow_debug_session {
         }
     }
     pub mod add_data_flow {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -730,7 +730,7 @@ pub mod data_flow_debug_session {
         }
     }
     pub mod delete_data_flow_debug_session {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -797,7 +797,7 @@ pub mod data_flow_debug_session {
         }
     }
     pub mod execute_command {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Accepted202,
@@ -826,7 +826,7 @@ pub mod data_flow_debug_session {
     }
 }
 pub mod dataset {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn get_datasets_by_workspace(
         operation_config: &crate::OperationConfig,
     ) -> std::result::Result<DatasetListResponse, get_datasets_by_workspace::Error> {
@@ -871,7 +871,7 @@ pub mod dataset {
         }
     }
     pub mod get_datasets_by_workspace {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -941,7 +941,7 @@ pub mod dataset {
         }
     }
     pub mod get_dataset {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("Error response #response_type")]
@@ -1017,7 +1017,7 @@ pub mod dataset {
         }
     }
     pub mod create_or_update_dataset {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200(DatasetResource),
@@ -1084,7 +1084,7 @@ pub mod dataset {
         }
     }
     pub mod delete_dataset {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -1153,7 +1153,7 @@ pub mod dataset {
         }
     }
     pub mod rename_dataset {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -1182,7 +1182,7 @@ pub mod dataset {
     }
 }
 pub mod linked_service {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn get_linked_services_by_workspace(
         operation_config: &crate::OperationConfig,
     ) -> std::result::Result<LinkedServiceListResponse, get_linked_services_by_workspace::Error> {
@@ -1227,7 +1227,7 @@ pub mod linked_service {
         }
     }
     pub mod get_linked_services_by_workspace {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -1297,7 +1297,7 @@ pub mod linked_service {
         }
     }
     pub mod get_linked_service {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("Error response #response_type")]
@@ -1373,7 +1373,7 @@ pub mod linked_service {
         }
     }
     pub mod create_or_update_linked_service {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200(LinkedServiceResource),
@@ -1442,7 +1442,7 @@ pub mod linked_service {
         }
     }
     pub mod delete_linked_service {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -1513,7 +1513,7 @@ pub mod linked_service {
         }
     }
     pub mod rename_linked_service {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -1542,7 +1542,7 @@ pub mod linked_service {
     }
 }
 pub mod workspace_git_repo_management {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn get_git_hub_access_token(
         operation_config: &crate::OperationConfig,
         x_ms_client_request_id: Option<&str>,
@@ -1591,7 +1591,7 @@ pub mod workspace_git_repo_management {
         }
     }
     pub mod get_git_hub_access_token {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("Unexpected HTTP status code {}", status_code)]
@@ -1612,7 +1612,7 @@ pub mod workspace_git_repo_management {
     }
 }
 pub mod integration_runtimes {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn list(operation_config: &crate::OperationConfig) -> std::result::Result<IntegrationRuntimeListResponse, list::Error> {
         let http_client = operation_config.http_client();
         let url_str = &format!("{}/integrationRuntimes", operation_config.base_path(),);
@@ -1650,7 +1650,7 @@ pub mod integration_runtimes {
         }
     }
     pub mod list {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -1712,7 +1712,7 @@ pub mod integration_runtimes {
         }
     }
     pub mod get {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -1736,393 +1736,53 @@ pub mod integration_runtimes {
     }
 }
 pub mod library {
-    use crate::models::*;
-    pub async fn list(operation_config: &crate::OperationConfig) -> std::result::Result<LibraryListResponse, list::Error> {
-        let http_client = operation_config.http_client();
-        let url_str = &format!("{}/libraries", operation_config.base_path(),);
-        let mut url = url::Url::parse(url_str).map_err(list::Error::ParseUrlError)?;
-        let mut req_builder = http::request::Builder::new();
-        req_builder = req_builder.method(http::Method::GET);
-        if let Some(token_credential) = operation_config.token_credential() {
-            let token_response = token_credential
-                .get_token(operation_config.token_credential_resource())
-                .await
-                .map_err(list::Error::GetTokenError)?;
-            req_builder = req_builder.header(http::header::AUTHORIZATION, format!("Bearer {}", token_response.token.secret()));
-        }
-        url.query_pairs_mut().append_pair("api-version", operation_config.api_version());
-        let req_body = bytes::Bytes::from_static(azure_core::EMPTY_BODY);
-        req_builder = req_builder.uri(url.as_str());
-        let req = req_builder.body(req_body).map_err(list::Error::BuildRequestError)?;
-        let rsp = http_client.execute_request(req).await.map_err(list::Error::ExecuteRequestError)?;
-        match rsp.status() {
-            http::StatusCode::OK => {
-                let rsp_body = rsp.body();
-                let rsp_value: LibraryListResponse =
-                    serde_json::from_slice(rsp_body).map_err(|source| list::Error::DeserializeError(source, rsp_body.clone()))?;
-                Ok(rsp_value)
-            }
-            status_code => {
-                let rsp_body = rsp.body();
-                let rsp_value: CloudError =
-                    serde_json::from_slice(rsp_body).map_err(|source| list::Error::DeserializeError(source, rsp_body.clone()))?;
-                Err(list::Error::DefaultResponse {
-                    status_code,
-                    value: rsp_value,
-                })
-            }
-        }
-    }
-    pub mod list {
-        use crate::{models, models::*};
-        #[derive(Debug, thiserror :: Error)]
-        pub enum Error {
-            #[error("HTTP status code {}", status_code)]
-            DefaultResponse {
-                status_code: http::StatusCode,
-                value: models::CloudError,
-            },
-            #[error("Failed to parse request URL: {0}")]
-            ParseUrlError(url::ParseError),
-            #[error("Failed to build request: {0}")]
-            BuildRequestError(http::Error),
-            #[error("Failed to execute request: {0}")]
-            ExecuteRequestError(azure_core::HttpError),
-            #[error("Failed to serialize request body: {0}")]
-            SerializeError(serde_json::Error),
-            #[error("Failed to deserialize response: {0}, body: {1:?}")]
-            DeserializeError(serde_json::Error, bytes::Bytes),
-            #[error("Failed to get access token: {0}")]
-            GetTokenError(azure_core::Error),
-        }
-    }
-    pub async fn flush(
+    use super::{models, models::*};
+    pub async fn append(
         operation_config: &crate::OperationConfig,
+        comp: &str,
         library_name: &str,
-    ) -> std::result::Result<flush::Response, flush::Error> {
+        content: &str,
+        x_ms_blob_condition_appendpos: Option<i64>,
+    ) -> std::result::Result<(), append::Error> {
         let http_client = operation_config.http_client();
-        let url_str = &format!("{}/libraries/{}/flush", operation_config.base_path(), library_name);
-        let mut url = url::Url::parse(url_str).map_err(flush::Error::ParseUrlError)?;
-        let mut req_builder = http::request::Builder::new();
-        req_builder = req_builder.method(http::Method::POST);
-        if let Some(token_credential) = operation_config.token_credential() {
-            let token_response = token_credential
-                .get_token(operation_config.token_credential_resource())
-                .await
-                .map_err(flush::Error::GetTokenError)?;
-            req_builder = req_builder.header(http::header::AUTHORIZATION, format!("Bearer {}", token_response.token.secret()));
-        }
-        url.query_pairs_mut().append_pair("api-version", operation_config.api_version());
-        let req_body = bytes::Bytes::from_static(azure_core::EMPTY_BODY);
-        req_builder = req_builder.header(http::header::CONTENT_LENGTH, 0);
-        req_builder = req_builder.uri(url.as_str());
-        let req = req_builder.body(req_body).map_err(flush::Error::BuildRequestError)?;
-        let rsp = http_client.execute_request(req).await.map_err(flush::Error::ExecuteRequestError)?;
-        match rsp.status() {
-            http::StatusCode::OK => Ok(flush::Response::Ok200),
-            http::StatusCode::ACCEPTED => {
-                let rsp_body = rsp.body();
-                let rsp_value: LibraryResourceInfo =
-                    serde_json::from_slice(rsp_body).map_err(|source| flush::Error::DeserializeError(source, rsp_body.clone()))?;
-                Ok(flush::Response::Accepted202(rsp_value))
-            }
-            status_code => {
-                let rsp_body = rsp.body();
-                let rsp_value: CloudError =
-                    serde_json::from_slice(rsp_body).map_err(|source| flush::Error::DeserializeError(source, rsp_body.clone()))?;
-                Err(flush::Error::DefaultResponse {
-                    status_code,
-                    value: rsp_value,
-                })
-            }
-        }
-    }
-    pub mod flush {
-        use crate::{models, models::*};
-        #[derive(Debug)]
-        pub enum Response {
-            Ok200,
-            Accepted202(LibraryResourceInfo),
-        }
-        #[derive(Debug, thiserror :: Error)]
-        pub enum Error {
-            #[error("HTTP status code {}", status_code)]
-            DefaultResponse {
-                status_code: http::StatusCode,
-                value: models::CloudError,
-            },
-            #[error("Failed to parse request URL: {0}")]
-            ParseUrlError(url::ParseError),
-            #[error("Failed to build request: {0}")]
-            BuildRequestError(http::Error),
-            #[error("Failed to execute request: {0}")]
-            ExecuteRequestError(azure_core::HttpError),
-            #[error("Failed to serialize request body: {0}")]
-            SerializeError(serde_json::Error),
-            #[error("Failed to deserialize response: {0}, body: {1:?}")]
-            DeserializeError(serde_json::Error, bytes::Bytes),
-            #[error("Failed to get access token: {0}")]
-            GetTokenError(azure_core::Error),
-        }
-    }
-    pub async fn get_operation_result(
-        operation_config: &crate::OperationConfig,
-        operation_id: &str,
-    ) -> std::result::Result<get_operation_result::Response, get_operation_result::Error> {
-        let http_client = operation_config.http_client();
-        let url_str = &format!("{}/libraryOperationResults/{}", operation_config.base_path(), operation_id);
-        let mut url = url::Url::parse(url_str).map_err(get_operation_result::Error::ParseUrlError)?;
-        let mut req_builder = http::request::Builder::new();
-        req_builder = req_builder.method(http::Method::GET);
-        if let Some(token_credential) = operation_config.token_credential() {
-            let token_response = token_credential
-                .get_token(operation_config.token_credential_resource())
-                .await
-                .map_err(get_operation_result::Error::GetTokenError)?;
-            req_builder = req_builder.header(http::header::AUTHORIZATION, format!("Bearer {}", token_response.token.secret()));
-        }
-        url.query_pairs_mut().append_pair("api-version", operation_config.api_version());
-        let req_body = bytes::Bytes::from_static(azure_core::EMPTY_BODY);
-        req_builder = req_builder.uri(url.as_str());
-        let req = req_builder.body(req_body).map_err(get_operation_result::Error::BuildRequestError)?;
-        let rsp = http_client
-            .execute_request(req)
-            .await
-            .map_err(get_operation_result::Error::ExecuteRequestError)?;
-        match rsp.status() {
-            http::StatusCode::OK => {
-                let rsp_body = rsp.body();
-                let rsp_value: LibraryResource = serde_json::from_slice(rsp_body)
-                    .map_err(|source| get_operation_result::Error::DeserializeError(source, rsp_body.clone()))?;
-                Ok(get_operation_result::Response::Ok200(rsp_value))
-            }
-            http::StatusCode::ACCEPTED => {
-                let rsp_body = rsp.body();
-                let rsp_value: OperationResult = serde_json::from_slice(rsp_body)
-                    .map_err(|source| get_operation_result::Error::DeserializeError(source, rsp_body.clone()))?;
-                Ok(get_operation_result::Response::Accepted202(rsp_value))
-            }
-            status_code => {
-                let rsp_body = rsp.body();
-                let rsp_value: CloudError = serde_json::from_slice(rsp_body)
-                    .map_err(|source| get_operation_result::Error::DeserializeError(source, rsp_body.clone()))?;
-                Err(get_operation_result::Error::DefaultResponse {
-                    status_code,
-                    value: rsp_value,
-                })
-            }
-        }
-    }
-    pub mod get_operation_result {
-        use crate::{models, models::*};
-        #[derive(Debug)]
-        pub enum Response {
-            Ok200(LibraryResource),
-            Accepted202(OperationResult),
-        }
-        #[derive(Debug, thiserror :: Error)]
-        pub enum Error {
-            #[error("HTTP status code {}", status_code)]
-            DefaultResponse {
-                status_code: http::StatusCode,
-                value: models::CloudError,
-            },
-            #[error("Failed to parse request URL: {0}")]
-            ParseUrlError(url::ParseError),
-            #[error("Failed to build request: {0}")]
-            BuildRequestError(http::Error),
-            #[error("Failed to execute request: {0}")]
-            ExecuteRequestError(azure_core::HttpError),
-            #[error("Failed to serialize request body: {0}")]
-            SerializeError(serde_json::Error),
-            #[error("Failed to deserialize response: {0}, body: {1:?}")]
-            DeserializeError(serde_json::Error, bytes::Bytes),
-            #[error("Failed to get access token: {0}")]
-            GetTokenError(azure_core::Error),
-        }
-    }
-    pub async fn get(operation_config: &crate::OperationConfig, library_name: &str) -> std::result::Result<LibraryResource, get::Error> {
-        let http_client = operation_config.http_client();
-        let url_str = &format!("{}/libraries/{}", operation_config.base_path(), library_name);
-        let mut url = url::Url::parse(url_str).map_err(get::Error::ParseUrlError)?;
-        let mut req_builder = http::request::Builder::new();
-        req_builder = req_builder.method(http::Method::GET);
-        if let Some(token_credential) = operation_config.token_credential() {
-            let token_response = token_credential
-                .get_token(operation_config.token_credential_resource())
-                .await
-                .map_err(get::Error::GetTokenError)?;
-            req_builder = req_builder.header(http::header::AUTHORIZATION, format!("Bearer {}", token_response.token.secret()));
-        }
-        url.query_pairs_mut().append_pair("api-version", operation_config.api_version());
-        let req_body = bytes::Bytes::from_static(azure_core::EMPTY_BODY);
-        req_builder = req_builder.uri(url.as_str());
-        let req = req_builder.body(req_body).map_err(get::Error::BuildRequestError)?;
-        let rsp = http_client.execute_request(req).await.map_err(get::Error::ExecuteRequestError)?;
-        match rsp.status() {
-            http::StatusCode::OK => {
-                let rsp_body = rsp.body();
-                let rsp_value: LibraryResource =
-                    serde_json::from_slice(rsp_body).map_err(|source| get::Error::DeserializeError(source, rsp_body.clone()))?;
-                Ok(rsp_value)
-            }
-            http::StatusCode::NOT_MODIFIED => Err(get::Error::NotModified304 {}),
-            status_code => {
-                let rsp_body = rsp.body();
-                let rsp_value: CloudError =
-                    serde_json::from_slice(rsp_body).map_err(|source| get::Error::DeserializeError(source, rsp_body.clone()))?;
-                Err(get::Error::DefaultResponse {
-                    status_code,
-                    value: rsp_value,
-                })
-            }
-        }
-    }
-    pub mod get {
-        use crate::{models, models::*};
-        #[derive(Debug, thiserror :: Error)]
-        pub enum Error {
-            #[error("Error response #response_type")]
-            NotModified304 {},
-            #[error("HTTP status code {}", status_code)]
-            DefaultResponse {
-                status_code: http::StatusCode,
-                value: models::CloudError,
-            },
-            #[error("Failed to parse request URL: {0}")]
-            ParseUrlError(url::ParseError),
-            #[error("Failed to build request: {0}")]
-            BuildRequestError(http::Error),
-            #[error("Failed to execute request: {0}")]
-            ExecuteRequestError(azure_core::HttpError),
-            #[error("Failed to serialize request body: {0}")]
-            SerializeError(serde_json::Error),
-            #[error("Failed to deserialize response: {0}, body: {1:?}")]
-            DeserializeError(serde_json::Error, bytes::Bytes),
-            #[error("Failed to get access token: {0}")]
-            GetTokenError(azure_core::Error),
-        }
-    }
-    pub async fn create(
-        operation_config: &crate::OperationConfig,
-        library_name: &str,
-    ) -> std::result::Result<create::Response, create::Error> {
-        let http_client = operation_config.http_client();
-        let url_str = &format!("{}/libraries/{}", operation_config.base_path(), library_name);
-        let mut url = url::Url::parse(url_str).map_err(create::Error::ParseUrlError)?;
+        let url_str = &format!("{}/libraries/{}?comp=appendblock", operation_config.base_path(), library_name);
+        let mut url = url::Url::parse(url_str).map_err(append::Error::ParseUrlError)?;
         let mut req_builder = http::request::Builder::new();
         req_builder = req_builder.method(http::Method::PUT);
         if let Some(token_credential) = operation_config.token_credential() {
             let token_response = token_credential
                 .get_token(operation_config.token_credential_resource())
                 .await
-                .map_err(create::Error::GetTokenError)?;
+                .map_err(append::Error::GetTokenError)?;
             req_builder = req_builder.header(http::header::AUTHORIZATION, format!("Bearer {}", token_response.token.secret()));
         }
         url.query_pairs_mut().append_pair("api-version", operation_config.api_version());
-        let req_body = bytes::Bytes::from_static(azure_core::EMPTY_BODY);
+        url.query_pairs_mut().append_pair("comp", comp);
+        req_builder = req_builder.header("content-type", "application/json");
+        let req_body = azure_core::to_json(content).map_err(append::Error::SerializeError)?;
+        if let Some(x_ms_blob_condition_appendpos) = x_ms_blob_condition_appendpos {
+            req_builder = req_builder.header("x-ms-blob-condition-appendpos", x_ms_blob_condition_appendpos);
+        }
         req_builder = req_builder.uri(url.as_str());
-        let req = req_builder.body(req_body).map_err(create::Error::BuildRequestError)?;
-        let rsp = http_client.execute_request(req).await.map_err(create::Error::ExecuteRequestError)?;
+        let req = req_builder.body(req_body).map_err(append::Error::BuildRequestError)?;
+        let rsp = http_client.execute_request(req).await.map_err(append::Error::ExecuteRequestError)?;
         match rsp.status() {
-            http::StatusCode::OK => Ok(create::Response::Ok200),
-            http::StatusCode::ACCEPTED => {
-                let rsp_body = rsp.body();
-                let rsp_value: LibraryResourceInfo =
-                    serde_json::from_slice(rsp_body).map_err(|source| create::Error::DeserializeError(source, rsp_body.clone()))?;
-                Ok(create::Response::Accepted202(rsp_value))
-            }
+            http::StatusCode::CREATED => Ok(()),
             status_code => {
                 let rsp_body = rsp.body();
                 let rsp_value: CloudError =
-                    serde_json::from_slice(rsp_body).map_err(|source| create::Error::DeserializeError(source, rsp_body.clone()))?;
-                Err(create::Error::DefaultResponse {
+                    serde_json::from_slice(rsp_body).map_err(|source| append::Error::DeserializeError(source, rsp_body.clone()))?;
+                Err(append::Error::DefaultResponse {
                     status_code,
                     value: rsp_value,
                 })
             }
         }
     }
-    pub mod create {
-        use crate::{models, models::*};
-        #[derive(Debug)]
-        pub enum Response {
-            Ok200,
-            Accepted202(LibraryResourceInfo),
-        }
+    pub mod append {
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
-            #[error("HTTP status code {}", status_code)]
-            DefaultResponse {
-                status_code: http::StatusCode,
-                value: models::CloudError,
-            },
-            #[error("Failed to parse request URL: {0}")]
-            ParseUrlError(url::ParseError),
-            #[error("Failed to build request: {0}")]
-            BuildRequestError(http::Error),
-            #[error("Failed to execute request: {0}")]
-            ExecuteRequestError(azure_core::HttpError),
-            #[error("Failed to serialize request body: {0}")]
-            SerializeError(serde_json::Error),
-            #[error("Failed to deserialize response: {0}, body: {1:?}")]
-            DeserializeError(serde_json::Error, bytes::Bytes),
-            #[error("Failed to get access token: {0}")]
-            GetTokenError(azure_core::Error),
-        }
-    }
-    pub async fn delete(
-        operation_config: &crate::OperationConfig,
-        library_name: &str,
-    ) -> std::result::Result<delete::Response, delete::Error> {
-        let http_client = operation_config.http_client();
-        let url_str = &format!("{}/libraries/{}", operation_config.base_path(), library_name);
-        let mut url = url::Url::parse(url_str).map_err(delete::Error::ParseUrlError)?;
-        let mut req_builder = http::request::Builder::new();
-        req_builder = req_builder.method(http::Method::DELETE);
-        if let Some(token_credential) = operation_config.token_credential() {
-            let token_response = token_credential
-                .get_token(operation_config.token_credential_resource())
-                .await
-                .map_err(delete::Error::GetTokenError)?;
-            req_builder = req_builder.header(http::header::AUTHORIZATION, format!("Bearer {}", token_response.token.secret()));
-        }
-        url.query_pairs_mut().append_pair("api-version", operation_config.api_version());
-        let req_body = bytes::Bytes::from_static(azure_core::EMPTY_BODY);
-        req_builder = req_builder.uri(url.as_str());
-        let req = req_builder.body(req_body).map_err(delete::Error::BuildRequestError)?;
-        let rsp = http_client.execute_request(req).await.map_err(delete::Error::ExecuteRequestError)?;
-        match rsp.status() {
-            http::StatusCode::OK => Ok(delete::Response::Ok200),
-            http::StatusCode::ACCEPTED => {
-                let rsp_body = rsp.body();
-                let rsp_value: LibraryResourceInfo =
-                    serde_json::from_slice(rsp_body).map_err(|source| delete::Error::DeserializeError(source, rsp_body.clone()))?;
-                Ok(delete::Response::Accepted202(rsp_value))
-            }
-            http::StatusCode::CONFLICT => Err(delete::Error::Conflict409 {}),
-            status_code => {
-                let rsp_body = rsp.body();
-                let rsp_value: CloudError =
-                    serde_json::from_slice(rsp_body).map_err(|source| delete::Error::DeserializeError(source, rsp_body.clone()))?;
-                Err(delete::Error::DefaultResponse {
-                    status_code,
-                    value: rsp_value,
-                })
-            }
-        }
-    }
-    pub mod delete {
-        use crate::{models, models::*};
-        #[derive(Debug)]
-        pub enum Response {
-            Ok200,
-            Accepted202(LibraryResourceInfo),
-        }
-        #[derive(Debug, thiserror :: Error)]
-        pub enum Error {
-            #[error("Error response #response_type")]
-            Conflict409 {},
             #[error("HTTP status code {}", status_code)]
             DefaultResponse {
                 status_code: http::StatusCode,
@@ -2144,7 +1804,7 @@ pub mod library {
     }
 }
 pub mod notebook {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn get_notebooks_by_workspace(
         operation_config: &crate::OperationConfig,
     ) -> std::result::Result<NotebookListResponse, get_notebooks_by_workspace::Error> {
@@ -2189,7 +1849,7 @@ pub mod notebook {
         }
     }
     pub mod get_notebooks_by_workspace {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -2255,7 +1915,7 @@ pub mod notebook {
         }
     }
     pub mod get_notebook_summary_by_work_space {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -2325,7 +1985,7 @@ pub mod notebook {
         }
     }
     pub mod get_notebook {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("Error response #response_type")]
@@ -2401,7 +2061,7 @@ pub mod notebook {
         }
     }
     pub mod create_or_update_notebook {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200(NotebookResource),
@@ -2468,7 +2128,7 @@ pub mod notebook {
         }
     }
     pub mod delete_notebook {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -2537,7 +2197,7 @@ pub mod notebook {
         }
     }
     pub mod rename_notebook {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -2566,7 +2226,7 @@ pub mod notebook {
     }
 }
 pub mod notebook_operation_result {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn get(operation_config: &crate::OperationConfig, operation_id: &str) -> std::result::Result<get::Response, get::Error> {
         let http_client = operation_config.http_client();
         let url_str = &format!("{}/notebookOperationResults/{}", operation_config.base_path(), operation_id);
@@ -2602,7 +2262,7 @@ pub mod notebook_operation_result {
         }
     }
     pub mod get {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -2633,7 +2293,7 @@ pub mod notebook_operation_result {
     }
 }
 pub mod operation_result {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn get(operation_config: &crate::OperationConfig, operation_id: &str) -> std::result::Result<get::Response, get::Error> {
         let http_client = operation_config.http_client();
         let url_str = &format!("{}/operationResults/{}", operation_config.base_path(), operation_id);
@@ -2669,7 +2329,7 @@ pub mod operation_result {
         }
     }
     pub mod get {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -2700,7 +2360,7 @@ pub mod operation_result {
     }
 }
 pub mod operation_status {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn get(operation_config: &crate::OperationConfig, operation_id: &str) -> std::result::Result<get::Response, get::Error> {
         let http_client = operation_config.http_client();
         let url_str = &format!("{}/operationStatuses/{}", operation_config.base_path(), operation_id);
@@ -2736,7 +2396,7 @@ pub mod operation_status {
         }
     }
     pub mod get {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -2767,7 +2427,7 @@ pub mod operation_status {
     }
 }
 pub mod pipeline {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn get_pipelines_by_workspace(
         operation_config: &crate::OperationConfig,
     ) -> std::result::Result<PipelineListResponse, get_pipelines_by_workspace::Error> {
@@ -2812,7 +2472,7 @@ pub mod pipeline {
         }
     }
     pub mod get_pipelines_by_workspace {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -2882,7 +2542,7 @@ pub mod pipeline {
         }
     }
     pub mod get_pipeline {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("Error response #response_type")]
@@ -2958,7 +2618,7 @@ pub mod pipeline {
         }
     }
     pub mod create_or_update_pipeline {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200(PipelineResource),
@@ -3025,7 +2685,7 @@ pub mod pipeline {
         }
     }
     pub mod delete_pipeline {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -3094,7 +2754,7 @@ pub mod pipeline {
         }
     }
     pub mod rename_pipeline {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -3183,7 +2843,7 @@ pub mod pipeline {
         }
     }
     pub mod create_pipeline_run {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -3207,7 +2867,7 @@ pub mod pipeline {
     }
 }
 pub mod pipeline_run {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn query_pipeline_runs_by_workspace(
         operation_config: &crate::OperationConfig,
         filter_parameters: &RunFilterParameters,
@@ -3254,7 +2914,7 @@ pub mod pipeline_run {
         }
     }
     pub mod query_pipeline_runs_by_workspace {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -3319,7 +2979,7 @@ pub mod pipeline_run {
         }
     }
     pub mod get_pipeline_run {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -3392,7 +3052,7 @@ pub mod pipeline_run {
         }
     }
     pub mod query_activity_runs {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -3457,7 +3117,7 @@ pub mod pipeline_run {
         }
     }
     pub mod cancel_pipeline_run {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -3481,7 +3141,7 @@ pub mod pipeline_run {
     }
 }
 pub mod spark_job_definition {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn get_spark_job_definitions_by_workspace(
         operation_config: &crate::OperationConfig,
     ) -> std::result::Result<SparkJobDefinitionsListResponse, get_spark_job_definitions_by_workspace::Error> {
@@ -3526,7 +3186,7 @@ pub mod spark_job_definition {
         }
     }
     pub mod get_spark_job_definitions_by_workspace {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -3598,7 +3258,7 @@ pub mod spark_job_definition {
         }
     }
     pub mod get_spark_job_definition {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("Error response #response_type")]
@@ -3674,7 +3334,7 @@ pub mod spark_job_definition {
         }
     }
     pub mod create_or_update_spark_job_definition {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200(SparkJobDefinitionResource),
@@ -3743,7 +3403,7 @@ pub mod spark_job_definition {
         }
     }
     pub mod delete_spark_job_definition {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -3827,7 +3487,7 @@ pub mod spark_job_definition {
         }
     }
     pub mod execute_spark_job_definition {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Accepted202(SparkBatchJob),
@@ -3901,7 +3561,7 @@ pub mod spark_job_definition {
         }
     }
     pub mod rename_spark_job_definition {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -3981,7 +3641,7 @@ pub mod spark_job_definition {
         }
     }
     pub mod debug_spark_job_definition {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Accepted202(SparkBatchJob),
@@ -4010,7 +3670,7 @@ pub mod spark_job_definition {
     }
 }
 pub mod sql_pools {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn list(operation_config: &crate::OperationConfig) -> std::result::Result<SqlPoolInfoListResult, list::Error> {
         let http_client = operation_config.http_client();
         let url_str = &format!("{}/sqlPools", operation_config.base_path(),);
@@ -4048,7 +3708,7 @@ pub mod sql_pools {
         }
     }
     pub mod list {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -4107,7 +3767,7 @@ pub mod sql_pools {
         }
     }
     pub mod get {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -4131,7 +3791,7 @@ pub mod sql_pools {
     }
 }
 pub mod sql_script {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn get_sql_scripts_by_workspace(
         operation_config: &crate::OperationConfig,
     ) -> std::result::Result<SqlScriptsListResponse, get_sql_scripts_by_workspace::Error> {
@@ -4176,7 +3836,7 @@ pub mod sql_script {
         }
     }
     pub mod get_sql_scripts_by_workspace {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -4246,7 +3906,7 @@ pub mod sql_script {
         }
     }
     pub mod get_sql_script {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("Error response #response_type")]
@@ -4322,7 +3982,7 @@ pub mod sql_script {
         }
     }
     pub mod create_or_update_sql_script {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200(SqlScriptResource),
@@ -4389,7 +4049,7 @@ pub mod sql_script {
         }
     }
     pub mod delete_sql_script {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -4458,7 +4118,7 @@ pub mod sql_script {
         }
     }
     pub mod rename_sql_script {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -4487,7 +4147,7 @@ pub mod sql_script {
     }
 }
 pub mod trigger {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn get_triggers_by_workspace(
         operation_config: &crate::OperationConfig,
     ) -> std::result::Result<TriggerListResponse, get_triggers_by_workspace::Error> {
@@ -4532,7 +4192,7 @@ pub mod trigger {
         }
     }
     pub mod get_triggers_by_workspace {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -4602,7 +4262,7 @@ pub mod trigger {
         }
     }
     pub mod get_trigger {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("Error response #response_type")]
@@ -4678,7 +4338,7 @@ pub mod trigger {
         }
     }
     pub mod create_or_update_trigger {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200(TriggerResource),
@@ -4745,7 +4405,7 @@ pub mod trigger {
         }
     }
     pub mod delete_trigger {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200,
@@ -4820,7 +4480,7 @@ pub mod trigger {
         }
     }
     pub mod subscribe_trigger_to_events {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200(TriggerSubscriptionOperationStatus),
@@ -4897,7 +4557,7 @@ pub mod trigger {
         }
     }
     pub mod get_event_subscription_status {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -4966,7 +4626,7 @@ pub mod trigger {
         }
     }
     pub mod unsubscribe_trigger_from_events {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug)]
         pub enum Response {
             Ok200(TriggerSubscriptionOperationStatus),
@@ -5032,7 +4692,7 @@ pub mod trigger {
         }
     }
     pub mod start_trigger {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -5093,7 +4753,7 @@ pub mod trigger {
         }
     }
     pub mod stop_trigger {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -5117,7 +4777,7 @@ pub mod trigger {
     }
 }
 pub mod trigger_run {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn rerun_trigger_instance(
         operation_config: &crate::OperationConfig,
         trigger_name: &str,
@@ -5165,7 +4825,7 @@ pub mod trigger_run {
         }
     }
     pub mod rerun_trigger_instance {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -5234,7 +4894,7 @@ pub mod trigger_run {
         }
     }
     pub mod cancel_trigger_instance {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -5302,7 +4962,7 @@ pub mod trigger_run {
         }
     }
     pub mod query_trigger_runs_by_workspace {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
@@ -5326,7 +4986,7 @@ pub mod trigger_run {
     }
 }
 pub mod workspace {
-    use crate::models::*;
+    use super::{models, models::*};
     pub async fn get(operation_config: &crate::OperationConfig) -> std::result::Result<Workspace, get::Error> {
         let http_client = operation_config.http_client();
         let url_str = &format!("{}/workspace", operation_config.base_path(),);
@@ -5364,7 +5024,7 @@ pub mod workspace {
         }
     }
     pub mod get {
-        use crate::{models, models::*};
+        use super::{models, models::*};
         #[derive(Debug, thiserror :: Error)]
         pub enum Error {
             #[error("HTTP status code {}", status_code)]
