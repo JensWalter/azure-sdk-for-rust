@@ -144,3 +144,4 @@ pub const NAMESPACE_ENABLED: &str = "x-ms-namespace-enabled";
 pub const MAX_ITEM_COUNT: &str = "x-ms-max-item-count";
 pub const ITEM_COUNT: &str = "x-ms-item-count";
 pub const ITEM_TYPE: &str = "x-ms-item-type";
+pub const TAGS: &str = "x-ms-tags";
